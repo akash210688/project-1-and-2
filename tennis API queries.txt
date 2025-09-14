@@ -1,0 +1,29 @@
+1. Find all players with more than 15 Grand Slam singles titles
+{ "grand_slams_singles.Australian Open": { "$exists": true }, 
+  "$expr": { 
+    "$gt": [
+      { "$add": [ 
+        "$grand_slams_singles.Australian Open", 
+        "$grand_slams_singles.French Open", 
+        "$grand_slams_singles.Wimbledon", 
+        "$grand_slams_singles.US Open" 
+      ] }, 
+      15 
+    ] 
+  } 
+}
+
+2. Find all female players who reached world No.1
+{ "gender": "female", "highest_ranking.rank": 1 }
+
+3.Players with more than 50 career singles titles
+{ "career_titles_singles": { "$gt": 50 } }
+
+
+
+
+4. Find all players still active
+{ "current_status": "active" }
+
+5. Compare head-to-head records vs Nadal
+{ "head_to_head.vs_nadal": { "$exists": true } }
